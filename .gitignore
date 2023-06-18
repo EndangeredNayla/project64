@@ -96,3 +96,7 @@ Thumbs.db
 /Source/Project64-input/Version.h
 /Source/Project64-video/Version.h
 /Source/RSP/Version.h
+/Plugin/Input/pj64raphnetraw.dll
+/Plugin/Input/pj64raphnetraw_net.dll
+/Plugin/pj64raphnetraw.dll
+/Plugin/pj64raphnetraw_net.dll

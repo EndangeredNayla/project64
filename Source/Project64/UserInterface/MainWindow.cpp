@@ -1112,7 +1112,7 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
                 _this->SaveWindowLoc();
             }
         }
-        if (ck->isPlayingKailleraGame)
+        if (ck && ck->isPlayingKailleraGame)
         {
             ck->endGame();
             ck->isPlayingKailleraGame = false;
