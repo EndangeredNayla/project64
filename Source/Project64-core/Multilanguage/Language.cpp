@@ -82,8 +82,8 @@ void CLanguage::LoadDefaultStrings(void)
     DEF_STR(MENU_HELP, "&Help");
     DEF_STR(MENU_ABOUT_PJ64, "&About Project64");
     DEF_STR(MENU_WEBSITE, "&Website");
-    DEF_STR(MENU_SUPPORT_PROJECT64, "&Support Project64");
     DEF_STR(MENU_DISCORD, "&Discord");
+    DEF_STR(MENU_MPN_DISCORD, "&MPN Discord");
 
     // Current save slot menu
     DEF_STR(MENU_SLOT_DEFAULT, "Default");

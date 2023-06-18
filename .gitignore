@@ -7,9 +7,10 @@
 *.opendb
 *.VC.db
 
-# static library output (MSVC, GCC--from core components like Common)
+*# static library output (MSVC, GCC--from core components like Common)
 *.lib
 *.a
+*.obj
 
 # compiler-generated sources (MSVC, GCC)
 *.asm
@@ -96,3 +97,8 @@ Thumbs.db
 /Source/Project64-input/Version.h
 /Source/Project64-video/Version.h
 /Source/RSP/Version.h
+
+*.tlog
+*.log
+
+/Source/Project64-netplay/Release

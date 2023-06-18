@@ -371,7 +371,7 @@ void kaillera_player_add_callback(char *name, int ping, unsigned short id, char 
 	kaillera_sdlg_LV_GULIST.FillRow(bfx, 1, x);	
 	int thrp = (ping * 60 / 1000 / conn) + 2;
 	wsprintf(bfx, "%i frames", thrp * conn - 1);
-	kaillera_sdlg_LV_GULIST.FillRow(bfx, 3, x);
+	kaillera_sdlg_LV_GULIST.FillRow(bfx, 2, x);
 }
 void kaillera_player_joined_callback(char * username, int ping, unsigned short uid, char connset){
 	kaillera_gdebug("* Joins: %s", username);
@@ -567,8 +567,6 @@ LRESULT CALLBACK KailleraServerDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, L
 
 			kaillera_sdlg_LV_GULIST.AddColumn("Nick", 100);
 			kaillera_sdlg_LV_GULIST.AddColumn("Ping", 60);
-			kaillera_sdlg_LV_GULIST.AddColumn("Connection", 60);
-			kaillera_sdlg_LV_GULIST.AddColumn("Delay", 60);
 			kaillera_sdlg_LV_GULIST.FullRowSelect();
 
 			kaillera_sdlgNormalMode();
@@ -1011,7 +1009,7 @@ LRESULT CALLBACK KailleraServerSelectDialogProc(HWND hDlg, UINT uMsg, WPARAM wPa
 			  
 				nSettings::get_str("IDC_IP", IP,"127.0.0.1:27886");
 				SetDlgItemText(hDlg, IDC_IP, IP);
-				
+				M
 				  HWND hxx = GetDlgItem(hDlg, IDC_GAME);
 				  if (gamelist != 0) {
 				  nSettings::get_str("IDC_GAME", GAME, "");
