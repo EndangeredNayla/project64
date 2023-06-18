@@ -6,7 +6,7 @@
 #define TICKS_PER_SECOND   10000000
 
 // Discord Project64 app ID
-#define PJ64_DISCORD_APPID "704794684387491891"
+#define PJ64_DISCORD_APPID "888655408623943731"
 
 void CDiscord::Init()
 {

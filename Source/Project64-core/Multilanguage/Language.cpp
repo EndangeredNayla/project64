@@ -428,7 +428,6 @@ void CLanguage::LoadDefaultStrings(void)
 
     // Support window
     DEF_STR(MSG_SUPPORT_TITLE, "Support Project64");
-    DEF_STR(MSG_SUPPORT_INFO, "Project64 is a free and open-source Nintendo 64 emulator. This allows you to play real Nintendo 64 software in much the same way as it would be on the original hardware.\n\nI am sorry about the inconvenience of this prompt, but you are being asked to wait for a few seconds in order to enjoy the result of hundreds of hours of work.\n\nIf you can and would like to support Project64 or you have gotten some value out of it then please support Project64 as either a thank you, or if you would like to see removal of this prompt.\n\nIf you have supported Project64:");
     DEF_STR(MSG_SUPPORT_ENTER_CODE, "Enter/Request Notification Code");
     DEF_STR(MSG_SUPPORT_PROJECT64, "Support Project64");
     DEF_STR(MSG_SUPPORT_CONTINUE, "Continue");

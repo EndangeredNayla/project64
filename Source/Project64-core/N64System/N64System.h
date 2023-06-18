@@ -13,6 +13,8 @@
 #include <Project64-core/N64System/Mips/Mempak.h>
 #include <Project64-core/Settings/DebugSettings.h>
 #include <Project64-core/Plugin.h>
+#include <Project64-core\3rdParty\mario_party_netplay.h>
+#include <3rdParty\discord-rpc\include\discord_rpc.h>
 #include <Project64-core/Logging.h>
 
 #include "Mips/TLB.h"
@@ -175,4 +177,23 @@ private:
     const uint32_t SaveID_0 = 0x23D8A6C8;   // Main save state info (*.pj)
     const uint32_t SaveID_1 = 0x56D2CD23;   // Extra data v1 (system timing) info (*.dat)
     const uint32_t SaveID_2 = 0x750A6BEB;   // Extra data v2 (timing + disk registers) (*.dat)
+
+    char* m_DiscordApplicationId;
+    uint8_t m_DiscordCurrentPlayers;
+    int64_t m_DiscordNextPost;
+    bool    m_DiscordSendPresence;
+    int64_t m_DiscordStartTime;
+
+    void    discordInit();
+    void    discordUpdate();
+    void    getMk64Rps(uint8_t* Rdram, DiscordRichPresence& discordPresence);
+    void    getMp1Rps(uint8_t* Rdram, DiscordRichPresence& discordPresence);
+    void    getMp2Rps(uint8_t* Rdram, DiscordRichPresence& discordPresence);
+    void    getMp3Rps(uint8_t* Rdram, DiscordRichPresence& discordPresence);
+    void    getSsbRps(uint8_t* Rdram, DiscordRichPresence& discordPresence);
+    void    getNumberControllers();
+
+    //Mario Party Netplay
+    //Has a state already been auto-saved?
+    bool m_HasAutosaved;
 };

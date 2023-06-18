@@ -12,6 +12,9 @@
 #include <Project64-core/N64System/Enhancement/Enhancements.h>
 #include "Settings/SettingType/SettingsType-Application.h"
 
+#include <ShlDisp.h>
+#include <shellapi.h>
+
 static void FixDirectories(void);
 void SetTraceModuleNames(void);
 
