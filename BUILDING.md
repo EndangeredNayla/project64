@@ -7,7 +7,7 @@ If you just want to run Project64 or its development builds, use the [Readme](ht
 
 ## Required software
 
-* Visual Studio 2019 Community Edition
+* Visual Studio 2022 Community Edition (though you can probably retarget to port to earlier MSVC)
 * During installation, select the `Desktop development with C++`
 * During the same part of installation, go to `Individual components` and select `MSVC c++ v.143 (latest)`
 
@@ -24,7 +24,9 @@ https://github.com/smash64-dev/project64.git
 
 Open the `Project64.sln` file in Visual Studio. You can now build the solution from the Build menu.
 
-Use the `Git Changes` tab to check out the project64k branch. This is our current working branch.
+Use the `Git Changes` tab to check out the `project64k` branch. This is our current working branch.
+
+Our testing is currently focusing on the `Release` and `Win32` configurations.
 
 Building a Release build will also generate an installer file alongside the output binary that you can use to test the installation process.
 

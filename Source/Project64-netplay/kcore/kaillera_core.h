@@ -1,8 +1,6 @@
 #pragma once
 
-#define N02_VER "v0.5r0"
-#define N02_COMP_VER "kaillera 0.9"
-#define KAILLERA_VERSION N02_VER "Project64-MPN - Netplay Setup"
+#define KAILLERA_VERSION "Project64-MPN - Netplay Setup"
 
 int kaillera_ping_server(char * host, int port, int limit = 1000);
 void kaillera_step();

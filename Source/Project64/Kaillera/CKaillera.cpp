@@ -326,7 +326,7 @@ void CKaillera::endGame()
 
 int CKaillera::LoadKailleraFuncs()
 {
-	KailleraHandle = LoadLibrary(L"Plugin/Netplay/n02.dll");
+	KailleraHandle = LoadLibrary(L"Plugin/Netplay/KNet.dll");
 
 	if (KailleraHandle) {
 		//ShowInfo("Kaillera Library found");
@@ -380,7 +380,7 @@ int CKaillera::LoadKailleraFuncs()
 	}
 	else
 	{
-		MessageBox(NULL, L"Netplay plugin n02.dll not found. Please place it in the Plugin/Netplay folder and run Project64-MPN again!", L"OOPS", NULL);
+		MessageBox(NULL, L"Netplay plugin KNet.dll not found. Please place it in the Plugin/Netplay folder and run Project64-MPN again!", L"OOPS", NULL);
 		PostQuitMessage(0);
 	}
 

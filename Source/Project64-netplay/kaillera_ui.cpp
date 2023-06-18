@@ -999,7 +999,7 @@ LRESULT CALLBACK KailleraServerSelectDialogProc(HWND hDlg, UINT uMsg, WPARAM wPa
 			
 			kaillera_ssdlg = hDlg;
 			
-			SetWindowText(hDlg, "n02 " KAILLERA_VERSION);
+			SetWindowText(hDlg, KAILLERA_VERSION);
 			
 			nSettings::Initialize("SC");
 			

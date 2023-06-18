@@ -84,6 +84,7 @@ CMainMenu::~CMainMenu()
     }
 
     delete ck;
+    ck = NULL;
 }
 
 void CMainMenu::SettingsChanged(CMainMenu * _this)
