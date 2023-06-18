@@ -100,10 +100,6 @@ void CKaillera::clearGameList()
 	memset(szKailleraNamedRoms, 0, sizeof(szKailleraNamedRoms));
 	memset(szFullFileNames, 0, sizeof(szFullFileNames));
 
-	// seed it with the two basic rooms
-	addGame("*Chat (not game)", " ");
-	addGame("*Away (leave messages)", " ");
-
 	numberOfGames = 2;
 }
 
@@ -330,7 +326,7 @@ void CKaillera::endGame()
 
 int CKaillera::LoadKailleraFuncs()
 {
-	KailleraHandle = LoadLibrary(L"kailleraclient.dll");
+	KailleraHandle = LoadLibrary(L"Plugin/Netplay/n02.dll");
 
 	if (KailleraHandle) {
 		//ShowInfo("Kaillera Library found");
@@ -384,7 +380,7 @@ int CKaillera::LoadKailleraFuncs()
 	}
 	else
 	{
-		MessageBox(NULL, L"Kaillearclient.dll not found. Please place it in the main folder and run Project64k again!", L"OOPS", NULL);
+		MessageBox(NULL, L"Netplay plugin n02.dll not found. Please place it in the Plugin/Netplay folder and run Project64-MPN again!", L"OOPS", NULL);
 		PostQuitMessage(0);
 	}
 

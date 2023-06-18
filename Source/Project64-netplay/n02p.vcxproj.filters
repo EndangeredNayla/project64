@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0d3784ed-c2bb-43fa-bd11-2a4b9aac7296}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{ba805d8b-efbf-430e-b365-f4fd34e26943}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{1dff0c30-9135-4afd-b9f4-70463cddb988}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{09241a38-0e49-4b89-8b2e-0d5a56221911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="p2p">
+      <UniqueIdentifier>{8c9ac92a-aedc-4843-995a-40939cf8d4c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="p2p\core">
+      <UniqueIdentifier>{d248fe19-205c-4296-af8a-649ebb1c7827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kaillera">
+      <UniqueIdentifier>{9c5c405d-597a-46a7-a98d-8826220e872c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kaillera\kcore">
+      <UniqueIdentifier>{6007fb4c-ce8a-4f33-ae72-5e72f0212d04}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="kailleraclient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\k_framecache.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="common\k_socket.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="common\nSettings.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="common\nThread.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="p2p_ui.cpp">
+      <Filter>p2p</Filter>
+    </ClCompile>
+    <ClCompile Include="core\p2p_core.cpp">
+      <Filter>p2p\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\p2p_instruction.cpp">
+      <Filter>p2p\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\p2p_message.cpp">
+      <Filter>p2p\core</Filter>
+    </ClCompile>
+    <ClCompile Include="kaillera_ui.cpp">
+      <Filter>kaillera</Filter>
+    </ClCompile>
+    <ClCompile Include="kaillera_ui_mslist.cpp">
+      <Filter>kaillera</Filter>
+    </ClCompile>
+    <ClCompile Include="kcore\k_instruction.cpp">
+      <Filter>kaillera\kcore</Filter>
+    </ClCompile>
+    <ClCompile Include="kcore\kaillera_core.cpp">
+      <Filter>kaillera\kcore</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="kailleraclient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="uihlp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common\dlist.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\k_framecache.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\k_socket.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\nSettings.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\nSTL.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\nThread.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\odlist.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\oslist.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\slist.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="p2p_ui.h">
+      <Filter>p2p</Filter>
+    </ClInclude>
+    <ClInclude Include="core\p2p_core.h">
+      <Filter>p2p\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\p2p_instruction.h">
+      <Filter>p2p\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\p2p_message.h">
+      <Filter>p2p\core</Filter>
+    </ClInclude>
+    <ClInclude Include="kaillera_ui.h">
+      <Filter>kaillera</Filter>
+    </ClInclude>
+    <ClInclude Include="kcore\k_instruction.h">
+      <Filter>kaillera\kcore</Filter>
+    </ClInclude>
+    <ClInclude Include="kcore\k_message.h">
+      <Filter>kaillera\kcore</Filter>
+    </ClInclude>
+    <ClInclude Include="kcore\kaillera_core.h">
+      <Filter>kaillera\kcore</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="n02.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -48,7 +48,7 @@
   <PropertyGroup>
     <TargetName>Project64-Input</TargetName>
     <TargetName Condition="'$(Configuration)'=='Debug'">Project64-Input_d</TargetName>
-    <OutDir>$(SolutionDir)Plugin\Input\</OutDir>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\Plugin\Input\</OutDir>
     <OutDir Condition="'$(Platform)'=='x64'">$(SolutionDir)Plugin64\Input\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup>

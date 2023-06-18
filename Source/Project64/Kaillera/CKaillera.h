@@ -81,7 +81,7 @@ private:
 	int LoadKailleraFuncs();
 	void processResult(CKailleraPacket ckp[]);
 	char *pszKailleraNamedRoms;
-	char *sAppName = "Project 64k Core 3.0";
+	char *sAppName = "MPN64";
 	DWORD values[4]; // for a maximum of 4 players
 	std::vector<char*> codes;
 	int playValuesLength;
