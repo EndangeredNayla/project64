@@ -100,7 +100,7 @@ void CKaillera::clearGameList()
 	memset(szKailleraNamedRoms, 0, sizeof(szKailleraNamedRoms));
 	memset(szFullFileNames, 0, sizeof(szFullFileNames));
 
-	numberOfGames = 2;
+	numberOfGames = 0;
 }
 
 void CKaillera::addGame(char *gameName, char *szFullFileName)
