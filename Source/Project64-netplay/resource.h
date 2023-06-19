@@ -1,5 +1,5 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
+// Microsoft Visual C++ generated include file.
 // Used by n02.rc
 //
 #define BTN_OKAI                        3
@@ -74,6 +74,8 @@
 #define BTN_KICK                        1060
 #define ST_DELAY                        1061
 #define SA_PST                          1063
+#define IDC_STATIC3                     1064
+#define IDC_STATIC4                     1065
 
 // Next default values for new objects
 // 
@@ -81,7 +83,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        110
 #define _APS_NEXT_COMMAND_VALUE         40001
-#define _APS_NEXT_CONTROL_VALUE         1064
+#define _APS_NEXT_CONTROL_VALUE         1065
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

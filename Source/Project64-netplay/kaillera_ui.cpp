@@ -374,24 +374,24 @@ void kaillera_player_add_callback(char *name, int ping, unsigned short id, char 
 	kaillera_sdlg_LV_GULIST.FillRow(bfx, 2, x);
 }
 void kaillera_player_joined_callback(char * username, int ping, unsigned short uid, char connset){
-	kaillera_gdebug("* Joins: %s", username);
+	kaillera_gdebug("%s joined the lobby", username);
 	kaillera_player_add_callback(username, ping, uid, connset);
 }
 void kaillera_player_left_callback(char * user, unsigned short id){
-	kaillera_gdebug("* Parts: %s", user);
+	kaillera_gdebug("%s left the lobby", user);
 	kaillera_sdlg_LV_GULIST.DeleteRow (kaillera_sdlg_LV_GULIST.Find(id));
 }
 void kaillera_user_kicked_callback(){
-	kaillera_error_callback("* You have been kicked out of the game");
+	kaillera_error_callback("You have been kicked out of the game");
 	KSSDFA.input = KSSDFA_END_GAME;
 	KSSDFA.state = 0;
 	kaillera_sdlgNormalMode();
 }
 void kaillera_login_stat_callback(char*lsmsg){
-	kaillera_core_debug("* %s", lsmsg);
+	kaillera_core_debug("%s", lsmsg);
 }
 void kaillera_player_dropped_callback(char * user, int gdpl){
-	kaillera_gdebug("* Dropped: %s (Player %i)", user, gdpl);
+	kaillera_gdebug("Dropped: %s (Player %i)", user, gdpl);
 	if (infos.clientDroppedCallback)
 		infos.clientDroppedCallback(user,gdpl);
 	if (gdpl == playerno) {
@@ -404,12 +404,11 @@ void kaillera_game_callback(char * game, char player, char players){
 		strcpy(GAME, game);
 	playerno = player;
 	numplayers = players;
-	kaillera_gdebug("kaillera_game_callback(%s, %i, %i)", GAME, playerno, numplayers);
-	kaillera_gdebug("press \"Drop\" if your emulator fails to load the game");
+	kaillera_gdebug("Started Game %s", GAME);
 	KSSDFA.input = KSSDFA_START_GAME;
 }
 void kaillera_game_netsync_wait_callback(int tx){
-	SetWindowText(kaillera_sdlg_ST_SPEED, "waiting for others");
+	SetWindowText(kaillera_sdlg_ST_SPEED, "Waiting for others");
 	int secs = tx / 1000;
 	int ssecs = (tx % 1000) / 100;
 	char xxx[32];
@@ -896,13 +895,13 @@ void KLSListDblClick(HWND hDlg){
 
 void KLSListLoad(){
 	KLSList.clear();
-	int count = nSettings::get_int("SLC", 0);
+	int count = nSettings::get_int("Server Count", 0);
 	for (int x=1;x<=count;x++){
 		char idt[32];
 		KLSNST sx;
-		wsprintf(idt, "SLS%i", x);
+		wsprintf(idt, "Server Name %i", x);
 		nSettings::get_str(idt,sx.servname, "UserName");
-		wsprintf(idt, "SLH%i", x);
+		wsprintf(idt, "Server IP %i", x);
 		nSettings::get_str(idt,sx.hostname, "127.0.0.1");
 		KLSList.add(sx);
 	}
@@ -910,13 +909,13 @@ void KLSListLoad(){
 }
 
 void KLSListSave(){
-	nSettings::set_int("SLC",KLSList.length);
+	nSettings::set_int("Server Count",KLSList.length);
 	for (int x=0;x<KLSList.length;x++){
 		char idt[32];
 		KLSNST sx = KLSList[x];
-		wsprintf(idt, "SLS%i", x+1);
+		wsprintf(idt, "Server Name %i", x+1);
 		nSettings::set_str(idt,sx.servname);
-		wsprintf(idt, "SLH%i", x+1);
+		wsprintf(idt, "Server IP %i", x+1);
 		nSettings::set_str(idt,sx.hostname);
 	}
 }
@@ -1001,7 +1000,7 @@ LRESULT CALLBACK KailleraServerSelectDialogProc(HWND hDlg, UINT uMsg, WPARAM wPa
 			
 			SetWindowText(hDlg, KAILLERA_VERSION);
 			
-			nSettings::Initialize("SC");
+			nSettings::Initialize("Main");
 			
 			/*
 			
@@ -1030,32 +1029,12 @@ LRESULT CALLBACK KailleraServerSelectDialogProc(HWND hDlg, UINT uMsg, WPARAM wPa
 				char USERNAME[32];
 				GetUserName(USERNAME, &xxx);
 				char un[128];
-				nSettings::get_str("USRN", un, USERNAME);
+				nSettings::get_str("Name", un, USERNAME);
 				strncpy(USERNAME, un, 32);
 				SetWindowText(GetDlgItem(hDlg, IDC_USRNAME), USERNAME);
 			}
 			
-			{
-				DWORD xxx = 32;
-				char QUITMSG[128] = "Open Kaillera - n02 (fix) " KAILLERA_VERSION;
-				char un[128];
-				nSettings::get_str("QMSG", un, QUITMSG);
-				strncpy(QUITMSG, un, 128);
-				SetWindowText(GetDlgItem(hDlg, IDC_QUITMSG), QUITMSG);
-			}
-
-			
 			kaillera_ssdlg_conset = GetDlgItem(hDlg, CB_CONSET);
-			SendMessage(kaillera_ssdlg_conset, CB_ADDSTRING, 0, (WPARAM)"LAN      (60 packets/s)");
-			SendMessage(kaillera_ssdlg_conset, CB_ADDSTRING, 0, (WPARAM)"Excelent (30 packets/s)");
-			SendMessage(kaillera_ssdlg_conset, CB_ADDSTRING, 0, (WPARAM)"Good     (20 packets/s)");
-			SendMessage(kaillera_ssdlg_conset, CB_ADDSTRING, 0, (WPARAM)"Average  (15 packets/s)");
-			SendMessage(kaillera_ssdlg_conset, CB_ADDSTRING, 0, (WPARAM)"Low      (12 packets/s)");
-			SendMessage(kaillera_ssdlg_conset, CB_ADDSTRING, 0, (WPARAM)"Bad      (10 packets/s)");
-			SendMessage(kaillera_ssdlg_conset, CB_SETCURSEL, nSettings::get_int("CNS", 0), 0);
-
-			
-			
 			
 			KLSListLv.handle = GetDlgItem(hDlg, LV_ULIST);
 			KLSListLv.AddColumn("Name", 200);
@@ -1073,14 +1052,9 @@ LRESULT CALLBACK KailleraServerSelectDialogProc(HWND hDlg, UINT uMsg, WPARAM wPa
 	case WM_CLOSE:
 		{
 			char tbuf[128];
-			GetWindowText(GetDlgItem(hDlg, IDC_QUITMSG), tbuf, 128);
-			nSettings::set_str("QMSG", tbuf);
 			
 			GetWindowText(GetDlgItem(hDlg, IDC_USRNAME), tbuf, 128);
-			nSettings::set_str("USRN", tbuf);
-
-			nSettings::set_int("CNS", SendMessage(kaillera_ssdlg_conset, CB_GETCURSEL, 0, 0));
-			
+			nSettings::set_str("Name", tbuf);			
 			
 		}
 		
