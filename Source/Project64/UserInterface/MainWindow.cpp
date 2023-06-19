@@ -650,6 +650,8 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
 
+            if (_this == nullptr) { break; }
+
             if (!_this->m_bMainWindow ||
                 !_this->m_Created ||
                 _this->m_AttachingMenu ||
@@ -704,6 +706,7 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
         {
             KillTimer(hWnd, Timer_SetWindowPos);
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
+            if (_this == nullptr) { break; }
             _this->SaveWindowLoc();
             break;
         }
@@ -771,6 +774,8 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
 
+            if (_this == nullptr) { break; }
+
             if (_this->m_bMainWindow && bCPURunning())
             {
                 if (g_BaseSystem)
@@ -785,6 +790,8 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
     case WM_KEYDOWN:
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
+
+            if (_this == nullptr) { break; }
 
             if (_this->m_bMainWindow && bCPURunning())
             {
@@ -801,6 +808,9 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
     case WM_SETFOCUS:
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
+
+            if (_this == nullptr) { break; }
+
             if (_this->RomBrowserVisible())
             {
                 PostMessage(hWnd, WM_BROWSER_TOP, 0, 0);
@@ -819,6 +829,9 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
     case WM_KILLFOCUS:
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
+            
+            if (_this == nullptr) { break; }
+
             if (_this->RomBrowserVisible())
             {
                 break;
@@ -836,6 +849,9 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
     case WM_ACTIVATEAPP:
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
+
+            if (_this == nullptr) { break; }
+
             DWORD fActive = (BOOL)wParam;
 
             if (fActive && _this->RomBrowserVisible())
@@ -876,18 +892,21 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
     case WM_MAKE_FOCUS:
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
+            if (_this == nullptr) { break; }
             _this->BringToTop();
         }
         break;
     case WM_BROWSER_TOP:
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
+            if (_this == nullptr) { break; }
             _this->RomBrowserToTop();
         }
         break;
     case WM_RESET_PLUGIN:
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
+            if (_this == nullptr) { break; }
             if (_this->m_ResetInfo != nullptr)
             {
                 g_Notify->BreakPoint(__FILE__, __LINE__);
@@ -899,6 +918,9 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
     case WM_GAME_CLOSED:
         {
             CMainGui * _this = (CMainGui *)GetProp(hWnd, L"Class");
+
+            if (_this == nullptr) { break; }
+
             Notify().WindowMode();
             if (UISettingsLoadBool(RomBrowser_Enabled))
             {
@@ -1087,7 +1109,7 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
         }
         break;
     case WM_CLOSE:
-        if (ck->isPlayingKailleraGame)
+        if (ck && ck->isPlayingKailleraGame)
         {
             ck->endGame();
             ck->isPlayingKailleraGame = false;
@@ -1099,6 +1121,9 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
         WriteTrace(TraceUserInterface, TraceDebug, "WM_DESTROY - start");
         {
             CMainGui   * _this = (CMainGui *)GetProp(hWnd, L"Class");
+
+            if (_this == nullptr) { break; }
+
             if (_this->m_bMainWindow)
             {
                 Notify().WindowMode();
@@ -1112,11 +1137,19 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
                 _this->SaveWindowLoc();
             }
         }
-        if (ck && ck->isPlayingKailleraGame)
+
+        if (ck)
         {
-            ck->endGame();
-            ck->isPlayingKailleraGame = false;
+            if (ck->isPlayingKailleraGame)
+            {
+                ck->endGame();
+                ck->isPlayingKailleraGame = false;
+            }
+
+            delete ck;
+            ck = NULL;
         }
+
         WriteTrace(TraceUserInterface, TraceDebug, "WM_DESTROY - 3");
         RemoveProp(hWnd, L"Class");
         WriteTrace(TraceUserInterface, TraceDebug, "WM_DESTROY - 4");

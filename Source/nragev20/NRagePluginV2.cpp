@@ -391,9 +391,11 @@ EXPORT void CALL InitiateControllers(
         // freePakData( &g_pcControllers[i] ); // Already called by CloseControllerPak
         freeModifiers( &g_pcControllers[i] );
         SetControllerDefaults( &g_pcControllers[i] );
-    }
 
-    g_pcControllers[0].fPlugged = true;
+        g_pcControllers[i].fPlugged = ControlInfo.Controls[i].Present;
+        g_pcControllers[i].fRawData = ControlInfo.Controls[i].RawData;
+        g_pcControllers[i].PakType = PAK_NONE;
+    }
 
     if (! LoadConfigFromINI() )
     {

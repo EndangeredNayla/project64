@@ -83,8 +83,11 @@ CMainMenu::~CMainMenu()
         g_Settings->UnregisterChangeCB(*iter, this, (CSettings::SettingChangedFunc)SettingsChanged);
     }
 
-    delete ck;
-    ck = NULL;
+    if (ck)
+    {
+        delete ck;
+        ck = NULL;
+    }
 }
 
 void CMainMenu::SettingsChanged(CMainMenu * _this)
