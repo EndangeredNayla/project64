@@ -13,7 +13,7 @@ char * subm;
 
 void nSettings::Initialize(char * submo, bool global){
 	file[0] = 0;
-	strcat(file, "Config/Netplay.ini");
+	strcat(file, "Config/Netplay.cfg");
 	subm = submo;
 }
 
