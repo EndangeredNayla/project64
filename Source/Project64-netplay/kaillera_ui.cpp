@@ -121,10 +121,6 @@ int CALLBACK kaillera_sdlg_gameslvCompareFunc(LPARAM lParam1, LPARAM lParam2, LP
 	char ItemText1[128];
 	char ItemText2[128];
 
-	
-	kaillera_sdlg_gameslv.CheckRow(ItemText1, 128, lParamSort, ind1);
-	kaillera_sdlg_gameslv.CheckRow(ItemText2, 128, lParamSort, ind2);
-
 	if (kaillera_sdlg_gameslvColumnTypes[lParamSort]) {
 		if (kaillera_sdlg_gameslvColumnOrder[lParamSort])
 			return strcmp(ItemText1, ItemText2);
@@ -287,7 +283,6 @@ void kaillera_user_add_callback(char*name, int ping, int status, unsigned short 
 	kaillera_sdlg_userslv.AddRow(name, id);
 	x = kaillera_sdlg_userslv.Find(id);
 	wsprintf(bfx, "%i", ping);
-	kaillera_sdlg_userslv.FillRow(bfx, 1, x);
 	kaillera_sdlg_userslv.FillRow(USER_STATUS[status], 3, x);
 }
 void kaillera_game_add_callback(char*gname, unsigned int id, char*emulator, char*owner, char*users, char status){
@@ -296,8 +291,7 @@ void kaillera_game_add_callback(char*gname, unsigned int id, char*emulator, char
 	kaillera_sdlg_gameslv.AddRow(gname, id);
 	x = kaillera_sdlg_gameslv.Find(id);
 	
-	kaillera_sdlg_gameslv.FillRow(owner, 2, x);
-	kaillera_sdlg_gameslv.FillRow(users, 4, x);
+	kaillera_sdlg_gameslv.FillRow(owner, 1, x);
 	kaillera_sdlg_gameslvReSort();
 }
 void kaillera_game_create_callback(char*gname, unsigned int id, char*emulator, char*owner){
@@ -340,7 +334,7 @@ void kaillera_game_status_change_callback(unsigned int id, char status, int play
 	kaillera_sdlg_gameslv.FillRow(GAME_STATUS[status], 3, x);
 	char users [32];
 	wsprintf(users, "%i/%i", players, maxplayers);
-	kaillera_sdlg_gameslv.FillRow(users, 4, x);
+	kaillera_sdlg_gameslv.FillRow(users, 2, x);
 	kaillera_sdlg_gameslvReSort();
 }
 
@@ -444,7 +438,6 @@ void kaillera_sdlg_create_games_list_menu() {
 	int counter = 1;
 	while ( *cx != 0) {
 		mi.wID = counter;
-		mi.dwTypeData = cx;
 		mi.dwItemData = (unsigned long)/*(ULONG_PTR)*/cx;
 		if (*cx != last_char && kaillera_sdlg_GamesCount > 20){
 			new_char_buffer[0] = *cx;
@@ -462,22 +455,12 @@ void kailelra_sdlg_join_selected_game(){
 	if (sel>=0 && sel < kaillera_sdlg_gameslv.RowsCount()) {
 		unsigned int id = kaillera_sdlg_gameslv.RowNo(sel);
 		char temp[128];
-		kaillera_sdlg_gameslv.CheckRow(temp, 128, 3, sel);
-		if (strcmp(temp, "Waiting")!=0) {
-			kaillera_error_callback("Joining running game is not allowed");
-			return;
-		}
 		kaillera_sdlg_gameslv.CheckRow(temp, 128, 0, sel);
 		char * cx = gamelist;
 		while (*cx!=0) {
 			int ll;
 			if (strcmp(cx, temp)==0) {
 				strcpy(GAME, temp);
-				kaillera_sdlg_gameslv.CheckRow(temp, 128, 1, sel);
-				if (strcmp(temp, APP)!= 0) {
-					if (MessageBox(kaillera_sdlg, "Emulator/version mismatch and the game may desync.\nDo you want to continue?", "Error", MB_YESNO | MB_ICONEXCLAMATION)!=IDYES)
-						return;
-				}
 				kaillera_join_game(id);
 				return;
 			}
@@ -490,27 +473,11 @@ void kaillera_sdlg_show_games_list_menu(HWND handle, bool incjoin = false){
 	POINT pi;
 	GetCursorPos(&pi);
 	HMENU mmainmenuu = kaillera_sdlg_CreateGamesMenu;
-	if(incjoin){
-		mmainmenuu = CreatePopupMenu();
-		MENUITEMINFO mi;
-		mi.cbSize = sizeof(MENUITEMINFO);
-		mi.fMask = MIIM_TYPE | MFT_STRING | MIIM_SUBMENU;
-		mi.fType = MFT_STRING;
-		mi.hSubMenu = kaillera_sdlg_CreateGamesMenu;
-		mi.dwTypeData = "Créer";
-		InsertMenuItem(mmainmenuu, MF_STRING, (int)mi.dwTypeData, &mi);
-		mi.fMask = MIIM_TYPE | MFT_STRING;
-		mi.dwTypeData = "Rejoindre";
-		AppendMenu(mmainmenuu, MF_STRING , (int)mi.dwTypeData, mi.dwTypeData);
-	}
 	char * rtgp = (char*)TrackPopupMenu(mmainmenuu, TPM_RETURNCMD,pi.x,pi.y,0, handle, NULL);
 	if(rtgp!=0){
-		if(strcmp("Rejoindre", rtgp)==0){
-			kailelra_sdlg_join_selected_game();
-		} else {
-			strcpy(GAME, rtgp);
-			kaillera_create_game(GAME);
-		}
+		strcpy(GAME, rtgp);
+		kaillera_create_game(GAME);
+
 	}
 }
 void kaillera_sdlg_destroy_games_list_menu(){
@@ -539,10 +506,11 @@ LRESULT CALLBACK KailleraServerDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, L
 			kaillera_sdlg_userslvColumnOrder[1] = 1;
 
 			kaillera_sdlg_gameslv.handle = GetDlgItem(hDlg, LV_GLIST);
-			kaillera_sdlg_gameslv.AddColumn("Name", 300);
-			kaillera_sdlg_gameslv.AddColumn("User", 100);
-			kaillera_sdlg_gameslv.AddColumn("Status", 80);
-			kaillera_sdlg_gameslv.AddColumn("Users", 50);
+			kaillera_sdlg_gameslv.AddColumn("Game", 250);
+			kaillera_sdlg_gameslv.AddColumn("Username", 250);
+			kaillera_sdlg_gameslv.AddColumn("Players", 40);
+			kaillera_sdlg_gameslv.AddColumn("Status", 120);
+
 			kaillera_sdlg_gameslv.FullRowSelect();
 			kaillera_sdlg_gameslvColumn = 3;
 			kaillera_sdlg_gameslvColumnOrder[3] = 0;
