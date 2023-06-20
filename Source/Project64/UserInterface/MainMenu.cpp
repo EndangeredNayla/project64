@@ -342,7 +342,7 @@ bool CMainMenu::ProcessMessage(HWND hWnd, DWORD /*FromAccelerator*/, DWORD MenuI
     case ID_FILE_REFRESHROMLIST: m_Gui->RefreshRomList(); break;
     case ID_FILE_KAILLERA:
         ck->setInfos();
-        ck->selectServerDialog(hWnd);
+        ck->startDialogThread(hWnd);
         break;
     case ID_FILE_EXIT:           DestroyWindow((HWND)hWnd); PostQuitMessage(0);  break;
     case ID_SYSTEM_RESET_SOFT:

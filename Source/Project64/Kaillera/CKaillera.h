@@ -43,7 +43,7 @@ public:
 	void clearGameList();
 	void addGame(char *gameName, char *szFullFileName);
 	void terminateGameList();
-	void selectServerDialog(HWND hWnd);
+	HANDLE startDialogThread(HWND hWnd);
 	void modifyPlayValues(DWORD values);
 	//void modifyPlayValues(CODES c);
 	void setInfos();
@@ -75,6 +75,7 @@ private:
 	void sendResetCode();
 	void sendLoadCode();
 	void sendConfirmCode();
+	static DWORD WINAPI selectServerDialog(LPVOID hWnd);
 
 	kailleraInfos   kInfos;
 	HMODULE KailleraHandle;

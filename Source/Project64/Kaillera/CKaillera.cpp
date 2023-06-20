@@ -123,9 +123,15 @@ void CKaillera::setInfos()
 	kailleraSetInfos(&kInfos);
 }
 
-void CKaillera::selectServerDialog(HWND hWnd)
+HANDLE CKaillera::startDialogThread(HWND hWnd)
 {
-	kailleraSelectServerDialog(hWnd);
+	return CreateThread(0, 0, selectServerDialog, hWnd, 0, 0);
+}
+
+DWORD WINAPI CKaillera::selectServerDialog(LPVOID hWnd)
+{
+	kailleraSelectServerDialog((HWND) hWnd);
+	return 0;
 }
 
 void CKaillera::modifyPlayValues(DWORD val)

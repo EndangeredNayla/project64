@@ -63,7 +63,7 @@ bool CControl_Plugin::Initiate(CN64System * System, RenderWindow * Window)
         if (ck && ck->isPlayingKailleraGame) // force all 4 controllers to be plugged in for >= 1.01 plugins
         {
             m_PluginControllers[i].Present = true;
-            m_PluginControllers[i].RawData = true;
+            m_PluginControllers[i].RawData = false;
         }
         else // default behavior
         {
@@ -128,7 +128,7 @@ bool CControl_Plugin::Initiate(CN64System * System, RenderWindow * Window)
         for (int32_t i = 0; i < 4; i++)
         {
             m_PluginControllers[i].Present = true;
-            m_PluginControllers[i].RawData = true;
+            m_PluginControllers[i].RawData = false;
             m_PluginControllers[i].Plugin = PLUGIN_NONE;
         }
     }
