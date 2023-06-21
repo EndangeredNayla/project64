@@ -152,8 +152,6 @@ STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
 EXSTYLE WS_EX_CONTROLPARENT
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    CONTROL         "Pause emulation when window is not active?",IDC_AUTOSLEEP,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,9,206,10
     CONTROL         "On loading a ROM go to full screen",IDC_LOAD_FULLSCREEN,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,24,206,10
     CONTROL         "Disable Screen Saver when running rom",IDC_SCREEN_SAVER,

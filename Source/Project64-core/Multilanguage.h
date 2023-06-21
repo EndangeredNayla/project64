@@ -250,7 +250,6 @@ enum LanguageStringID
     DIR_SELECT_TEXTURE = 452,
 
     // Options (general) tab
-    OPTION_AUTO_SLEEP = 460,
     OPTION_AUTO_FULLSCREEN = 461,
     OPTION_BASIC_MODE = 462,
     OPTION_REMEMBER_CHEAT = 463,

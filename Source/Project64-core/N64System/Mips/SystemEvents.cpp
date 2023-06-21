@@ -14,9 +14,6 @@ const char * SystemEventName(SystemEvent event)
     case SysEvent_ResetCPU_Hard: return "SysEvent_ResetCPU_Hard";
     case SysEvent_CloseCPU: return "SysEvent_CloseCPU";
     case SysEvent_PauseCPU_FromMenu: return "SysEvent_PauseCPU_FromMenu";
-    case SysEvent_PauseCPU_AppLostActive: return "SysEvent_PauseCPU_AppLostActive";
-    case SysEvent_PauseCPU_AppLostActiveDelay: return "SysEvent_PauseCPU_AppLostActiveDelay";
-    case SysEvent_PauseCPU_AppLostFocus: return "SysEvent_PauseCPU_AppLostFocus";
     case SysEvent_PauseCPU_SaveGame: return "SysEvent_PauseCPU_SaveGame";
     case SysEvent_PauseCPU_LoadGame: return "SysEvent_PauseCPU_LoadGame";
     case SysEvent_PauseCPU_DumpMemory: return "SysEvent_PauseCPU_DumpMemory";
@@ -177,20 +174,6 @@ void CSystemEvents::ExecuteEvents()
             if (!g_Settings->LoadBool(GameRunning_CPU_Paused))
             {
                 g_Settings->SaveDword(GameRunning_CPU_PausedType, PauseType_FromMenu);
-                bPause = true;
-            }
-            break;
-        case SysEvent_PauseCPU_AppLostFocus:
-            if (!g_Settings->LoadBool(GameRunning_CPU_Paused))
-            {
-                g_Settings->SaveDword(GameRunning_CPU_PausedType, PauseType_AppLostFocus);
-                bPause = true;
-            }
-            break;
-        case SysEvent_PauseCPU_AppLostActive:
-            if (!g_Settings->LoadBool(GameRunning_CPU_Paused))
-            {
-                g_Settings->SaveDword(GameRunning_CPU_PausedType, PauseType_AppLostActive);
                 bPause = true;
             }
             break;

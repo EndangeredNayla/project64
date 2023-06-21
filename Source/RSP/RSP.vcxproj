@@ -47,7 +47,7 @@
   <PropertyGroup>
     <TargetName>RSP 1.7</TargetName>
     <TargetName Condition="'$(Configuration)'=='Debug'">RSP_d 1.7</TargetName>
-    <OutDir>$(SolutionDir)Plugin\RSP\</OutDir>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\Plugin\RSP\</OutDir>
     <OutDir Condition="'$(Platform)'=='x64'">$(SolutionDir)Plugin64\RSP\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup>

@@ -251,7 +251,6 @@
 #define IDC_FUNCFIND_TEXT               1094
 #define IDC_REMEMBER                    1095
 #define IDC_GFX_NAME                    1095
-#define IDC_AUTOSLEEP                   1096
 #define IDC_COUNTFACT_TEXT              1096
 #define IDC_RSP_NAME                    1097
 #define IDC_REMEMBERDIR                 1097

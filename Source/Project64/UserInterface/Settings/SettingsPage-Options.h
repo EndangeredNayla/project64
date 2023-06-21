@@ -6,7 +6,6 @@ class CGeneralOptionsPage :
 {
 
 	BEGIN_MSG_MAP_EX(CGeneralOptionsPage)
-		COMMAND_ID_HANDLER_EX(IDC_AUTOSLEEP,CheckBoxChanged)
 		COMMAND_ID_HANDLER_EX(IDC_LOAD_FULLSCREEN,CheckBoxChanged)
 		COMMAND_ID_HANDLER_EX(IDC_SCREEN_SAVER,CheckBoxChanged)
         COMMAND_ID_HANDLER_EX(IDC_DISCORD_RPC, CheckBoxChanged)

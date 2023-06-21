@@ -203,8 +203,6 @@ void CN64System::ExternalEvent(SystemEvent action)
     case SysEvent_ResetRecompilerCode:
         QueueEvent(action);
         break;
-    case SysEvent_PauseCPU_AppLostFocus:
-    case SysEvent_PauseCPU_AppLostActive:
     case SysEvent_PauseCPU_SaveGame:
     case SysEvent_PauseCPU_LoadGame:
     case SysEvent_PauseCPU_DumpMemory:

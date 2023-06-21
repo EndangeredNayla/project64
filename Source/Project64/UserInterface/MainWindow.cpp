@@ -817,7 +817,7 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
                 break;
             }
 
-            if (_this->m_bMainWindow && bCPURunning() && bAutoSleep())
+            if (_this->m_bMainWindow && bCPURunning())
             {
                 if (g_BaseSystem)
                 {
@@ -836,14 +836,6 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
             {
                 break;
             }
-
-            if (_this->m_bMainWindow && bCPURunning() && bAutoSleep())
-            {
-                if (g_BaseSystem)
-                {
-                    g_BaseSystem->ExternalEvent(SysEvent_PauseCPU_AppLostFocus);
-                }
-            }
         }
         break;
     case WM_ACTIVATEAPP:
@@ -857,25 +849,6 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
             if (fActive && _this->RomBrowserVisible())
             {
                 PostMessage(hWnd, WM_BROWSER_TOP, 0, 0);
-            }
-            if (_this->m_bMainWindow && bCPURunning())
-            {
-                if (!fActive && UISettingsLoadBool(UserInterface_InFullScreen) && UISettingsLoadBool(UserInterface_ExitFullscreenOnLoseFocus))
-                {
-                    Notify().WindowMode();
-                    if (bAutoSleep() && g_BaseSystem)
-                    {
-                        //System->ExternalEvent(PauseCPU_AppLostActiveDelayed );
-                    }
-                    break;
-                }
-                if (bAutoSleep() || fActive)
-                {
-                    if (g_BaseSystem)
-                    {
-                        g_BaseSystem->ExternalEvent(fActive ? SysEvent_ResumeCPU_AppGainedActive : SysEvent_PauseCPU_AppLostActive);
-                    }
-                }
             }
         }
         break;
