@@ -55,7 +55,7 @@ void CGameSettings::RefreshGameSettings()
     m_DelaySI = g_Settings->LoadBool(Game_DelaySI);
     m_bRandomizeSIPIInterrupts = g_Settings->LoadBool(Game_RandomizeSIPIInterrupts);
     m_DelayDP = g_Settings->LoadBool(Game_DelayDP);
-    m_bFixedAudio = g_Settings->LoadBool(Game_FixedAudio);
+    m_bFixedAudio = /*g_Settings->LoadBool(Game_FixedAudio)*/true;
     m_FullSpeed = g_Settings->LoadBool(Game_FullSpeed);
     m_b32Bit = g_Settings->LoadBool(Game_32Bit);
 #ifdef ANDROID

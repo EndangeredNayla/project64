@@ -217,8 +217,11 @@ void CMainMenu::OnEndEmulation(void)
 		CDiscord::Update(false);
 	}
 
-    ck->endGame();
-    ck->isPlayingKailleraGame = false;
+    if (ck && ck->isPlayingKailleraGame)
+    {
+        ck->endGame();
+        ck->isPlayingKailleraGame = false;
+    }
 }
 
 void CMainMenu::OnScreenShot(void)
