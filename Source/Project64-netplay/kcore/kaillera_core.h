@@ -1,6 +1,6 @@
 #pragma once
 
-#define KAILLERA_VERSION "Project64-MPN - Netplay Setup"
+#define KAILLERA_VERSION "KNet - Netplay Setup"
 
 int kaillera_ping_server(char * host, int port, int limit = 1000);
 void kaillera_step();

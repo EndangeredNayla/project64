@@ -161,10 +161,6 @@ int main()
         {
             line.Format("#define GIT_VERSION                 \"%s%s%s\"\n", RevisionShort.c_str(), BuildDirty ? "-" : "", BuildDirty ? "Dirty" : "");
         }
-        else if (_strnicmp(line.c_str(), "#define VERSION_BUILD", 21) == 0)
-        {
-            line.Format("#define VERSION_BUILD               %d\n", VersionBuild);
-        }
         else if (_strnicmp(line.c_str(), "#define GIT_REVISION ", 21) == 0)
         {
             line.Format("#define GIT_REVISION                \"%s\"\n", Revision.c_str());
