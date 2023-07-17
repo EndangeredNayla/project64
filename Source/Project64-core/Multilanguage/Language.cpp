@@ -204,7 +204,6 @@ void CLanguage::LoadDefaultStrings(void)
     DEF_STR(OPTION_DISABLE_SS, "Disable screensaver when running a ROM");
     DEF_STR(OPTION_DISPLAY_FR, "Display speed");
     DEF_STR(OPTION_CHECK_RUNNING, "Check if Project64 is already running");
-    DEF_STR(OPTION_UNIQUE_SAVE_DIR, "Store game saves in separate folders");
     DEF_STR(OPTION_CHANGE_FR, "Speed display:");
     DEF_STR(OPTION_IPL_ROM_PATH, "Japanese retail 64DD IPL ROM path:");
     DEF_STR(OPTION_IPL_ROM_USA_PATH, "American retail 64DD IPL ROM path:");

@@ -706,10 +706,6 @@ std::wstring CMainMenu::GetSaveSlotString(int Slot)
 
     // Check first save name
     CPath FileName(g_Settings->LoadStringVal(Directory_InstantSave).c_str(), "");
-    if (g_Settings->LoadBool(Setting_UniqueSaveDir))
-    {
-        FileName.AppendDirectory(g_Settings->LoadStringVal(Game_UniqueSaveDir).c_str());
-    }
     FileName.NormalizePath(CPath(CPath::MODULE_DIRECTORY));
     if (Slot != 0)
     {

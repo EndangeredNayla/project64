@@ -15,7 +15,6 @@ CAdvancedOptionsPage::CAdvancedOptionsPage(HWND hParent, const RECT & rcDispay)
     SetDlgItemText(IDC_DEBUGGER, wGS(ADVANCE_DEBUGGER).c_str());
     SetDlgItemText(IDC_REMEMBER_CHEAT, wGS(OPTION_REMEMBER_CHEAT).c_str());
     SetDlgItemText(IDC_INTERPRETER, wGS(ADVANCE_ALWAYS_INTERPRETER).c_str());
-    SetDlgItemText(IDC_UNIQUE_SAVE_DIR, wGS(OPTION_UNIQUE_SAVE_DIR).c_str());
     SetDlgItemText(IDC_CHECK_RUNNING, wGS(OPTION_CHECK_RUNNING).c_str());
     SetDlgItemText(IDC_ENABLE_ENHANCEMENTS, wGS(OPTION_ENABLE_ENHANCEMENTS).c_str());
     SetDlgItemText(IDC_DISPLAY_FRAMERATE, wGS(OPTION_CHANGE_FR).c_str());
@@ -27,7 +26,6 @@ CAdvancedOptionsPage::CAdvancedOptionsPage(HWND hParent, const RECT & rcDispay)
     AddModCheckBox(GetDlgItem(IDC_DEBUGGER), Debugger_Enabled);
 	AddModCheckBox(GetDlgItem(IDC_INTERPRETER), Setting_ForceInterpreterCPU);
     AddModCheckBox(GetDlgItem(IDC_REMEMBER_CHEAT), Setting_RememberCheats);
-    AddModCheckBox(GetDlgItem(IDC_UNIQUE_SAVE_DIR), Setting_UniqueSaveDir);
     AddModCheckBox(GetDlgItem(IDC_CHECK_RUNNING), Setting_CheckEmuRunning);
     AddModCheckBox(GetDlgItem(IDC_ENABLE_ENHANCEMENTS), Setting_Enhancement);
     AddModCheckBox(GetDlgItem(IDC_DISPLAY_FRAMERATE), UserInterface_DisplayFrameRate);

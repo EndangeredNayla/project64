@@ -16,7 +16,7 @@ void CN64System::StartEmulationThread(CThread * thread)
 {
     WriteTrace(TraceN64System, TraceDebug, "Start");
 #ifdef _WIN32
-    if (g_Settings->LoadBool(Setting_CN64TimeCritical))
+    if (true)
     {
         SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_TIME_CRITICAL);
     }
